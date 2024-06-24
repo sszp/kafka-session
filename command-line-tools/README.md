@@ -7,6 +7,8 @@ in the kafka docker image with something like `docker exec -it <CONTAINER ID> ./
 * docker run -d -p 9092:9092 apache/kafka:3.7.0
 * cd kafka_2.13-3.7.0/bin
 * ./kafka-topics.sh --create --topic topic1 --bootstrap-server localhost:9092
+* Check the new topic configs using: `./kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic topic1`
+* You can increase the number of partitions by running: `./kafka-topics.sh --bootstrap-server localhost:9092 --topic topic1 --alter --partitions 4`
 * In a new terminal window, run: ./kafka-console-consumer.sh --topic topic1  --bootstrap-server localhost:9092
 * ./kafka-console-producer.sh --topic topic1 --bootstrap-server localhost:9092
 * Send events by typing anything followed by enter
