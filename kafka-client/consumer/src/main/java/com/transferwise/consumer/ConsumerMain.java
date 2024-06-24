@@ -26,11 +26,10 @@ public class ConsumerMain {
             consumer.subscribe(List.of(topicName));
 
             while (true) {
-                ConsumerRecords<String, TransferDto> records =
-                        consumer.poll(Duration.ofMillis(100));
+                ConsumerRecords<String, TransferDto> records = consumer.poll(Duration.ofMillis(100));
 
                 for (ConsumerRecord<String, TransferDto> record : records) {
-                    //Artificial delay to simulate processing time (calling other services and some db operations)
+                    //Artificial delay to simulate processing time (calling other services or some db operations)
                     try {
                         TimeUnit.MILLISECONDS.sleep(1100);
                     } catch (InterruptedException e) {
