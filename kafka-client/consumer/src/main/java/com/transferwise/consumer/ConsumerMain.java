@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import java.time.Duration;
 import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import static com.transferwise.configuration.BasicConfig.bootstrapServers;
 import static com.transferwise.configuration.BasicConfig.topicName;
@@ -29,6 +30,12 @@ public class ConsumerMain {
                         consumer.poll(Duration.ofMillis(100));
 
                 for (ConsumerRecord<String, TransferDto> record : records) {
+                    //Artificial delay to simulate processing time (calling other services and some db operations)
+                    try {
+                        TimeUnit.MILLISECONDS.sleep(1100);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
                     log.info("Key: " + record.key() + ", Value: " + record.value());
                     log.info("Partition: " + record.partition() + ", Offset:" + record.offset());
                 }

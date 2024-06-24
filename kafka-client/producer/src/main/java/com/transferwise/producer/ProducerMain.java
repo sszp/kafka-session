@@ -21,7 +21,7 @@ public class ProducerMain {
 
     public static void main(String[] args) throws InterruptedException {
         try (KafkaProducer<String, TransferDto> producer = createProducer()) {
-            for (int i = 0; i < 100; i++) {
+            for (int i = 0; i < 10000; i++) {
                 final int key = ThreadLocalRandom.current().nextInt(10000, 100000);
                 producer.send(new ProducerRecord<>(topicName, String.valueOf(key), createTransferDto(key)),
                         (metadata, exception) -> log.info("event with key {} is sent", key));
