@@ -8,5 +8,6 @@ To run the service:
   can start it using `docker run -d -p 9092:9092 apache/kafka:3.7.0`.
 * Start a command-line consumer to check the output aggregates: `./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic stream.processing.output.topic --from-beginning
   `
-* Run `ProducerMain.java` to generate some transfer events
-* Start the kafka streams pipeline `PipelineMain.java` 
+* Run `ProducerMain.java` to generate some transfer events, you can run it with gradle: `./gradlew run -PmainClassToRun=com.transferwise.streamprocessing.producer.ProducerMain`
+* Start the kafka streams pipeline `PipelineMain.java` , you can run it with gradle: `./gradlew run -PmainClassToRun=com.transferwise.streamprocessing.PipelineMain`
+* Check the console consumer window for the resulting aggregates

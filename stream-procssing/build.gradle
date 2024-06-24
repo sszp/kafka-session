@@ -1,6 +1,11 @@
 plugins {
     id 'java'
     id "io.freefair.lombok" version "5.3.3.3"
+    id 'application'
+}
+
+application {
+    mainClassName = project.findProperty("mainClassToRun").toString()
 }
 
 group 'com.transferwise'
