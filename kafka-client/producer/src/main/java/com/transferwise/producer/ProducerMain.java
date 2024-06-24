@@ -1,4 +1,4 @@
-package com.transferwise.service;
+package com.transferwise.producer;
 
 import com.transferwise.dto.TransferDto;
 import org.apache.kafka.clients.producer.KafkaProducer;
@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
-import java.util.Calendar;
 import java.util.Properties;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
@@ -35,7 +34,7 @@ public class ProducerMain {
         Properties properties = new Properties();
         properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         properties.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        properties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "com.transferwise.serde.JsonSerializer");
+        properties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "com.transferwise.JsonSerializer");
 
         return new KafkaProducer<>(properties);
     }

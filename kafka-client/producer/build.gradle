@@ -4,7 +4,7 @@ plugins {
 }
 
 application {
-    mainClass = "com.transferwise.service.ProducerMain"
+    mainClass = "com.transferwise.producer.ProducerMain"
 }
 
 group 'com.transferwise'

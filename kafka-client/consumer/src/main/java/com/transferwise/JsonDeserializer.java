@@ -1,4 +1,4 @@
-package com.transferwise.serde;
+package com.transferwise;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.transferwise.dto.TransferDto;
