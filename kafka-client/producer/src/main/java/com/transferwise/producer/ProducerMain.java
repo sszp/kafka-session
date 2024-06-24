@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Properties;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
@@ -46,6 +47,6 @@ public class ProducerMain {
                 .receiverId(String.valueOf(ThreadLocalRandom.current().nextInt(10000, 100000)))
                 .amount(BigDecimal.valueOf(ThreadLocalRandom.current().nextDouble(1, 1000)))
                 .currency("GBP")
-                .transferredAt(0).build();
+                .transferredAt(Calendar.getInstance().getTimeInMillis()).build();
     }
 }
