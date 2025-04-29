@@ -29,17 +29,16 @@ public class ConsumerMain {
                 ConsumerRecords<String, TransferDto> records = consumer.poll(Duration.ofMillis(100));
 
                 for (ConsumerRecord<String, TransferDto> record : records) {
-                    //Artificial delay to simulate processing time (calling other services or some db operations)
-                    try {
-                        TimeUnit.MILLISECONDS.sleep(1100);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                    log.info("Key: " + record.key() + ", Value: " + record.value());
-                    log.info("Partition: " + record.partition() + ", Offset:" + record.offset());
+                    processRecord(record);
+
                 }
             }
         }
+    }
+
+    private static void processRecord(ConsumerRecord<String, TransferDto> record) {
+        log.info("Key: " + record.key() + ", Value: " + record.value());
+        log.info("Partition: " + record.partition() + ", Offset:" + record.offset());
     }
 
     private static KafkaConsumer<String, TransferDto> createConsumer() {
